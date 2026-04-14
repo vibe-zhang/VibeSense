@@ -1,5 +1,6 @@
 > **📄 Paper**: *"Low-Cost Edge AI Fault Diagnosis System for Rotating Machinery Based on ESP32-S3"*  
 > **👤 Author**: Y S Deng
+> 
 > **📧 Contact**: 1662284539@qq.com  
 > **🔗 Repository Maintainer**: The corresponding author Y S Deng maintains this repository.
 > # VibeSense —— 低成本工业设备振动诊断系统
