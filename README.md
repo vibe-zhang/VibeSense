@@ -1,85 +1,43 @@
-> **📄 Paper**: *"Low-Cost Edge AI Fault Diagnosis System for Rotating Machinery Based on ESP32-S3"*  
-> **👤 Author**: Y S Deng
-> 
-> **📧 Contact**: 1662284539@qq.com  
-> **🔗 Repository Maintainer**: The corresponding author Y S Deng maintains this repository.
-> # VibeSense —— 低成本工业设备振动诊断系统
+# VibeSense —— 工业设备智能协同平台
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+[![Platform](https://img.shields.io/badge/Platform-ESP32--S3-green.svg)]()
 
-## 📌 项目简介
+## 🎯 项目定位
 
-VibeSense 是一个基于 ESP32-S3 和 MPU6050 的边缘 AI 振动诊断系统，成本低于 **50 元**，能实时检测旋转设备（如风扇、电机）的不平衡故障。
+VibeSense 是一个**边缘AI多模态工业设备健康监测平台**。我们不是在做一个简单的监测工具，而是在构建一个让工业设备“活过来”、能自主感知、预警、对话和进化的智能生态系统。
 
-**核心特性**：
-- 1000Hz 实时振动数据采集
-- 片上 FFT 频谱分析
-- 轻量级随机森林模型（50棵树，11个特征）
-- Wi-Fi 远程报警（MQTT）
-- 准确率 100%（模拟数据集）
+- **低成本硬件 (< ¥50)**: 基于ESP32-S3，采用非接触式传感器，让每一台设备都装得起。
+- **设备社交网络**: 让设备与设备、设备与人之间进行数据共享和协同诊断。
+- **子母模型进化**: 云端“母模型”持续学习，边缘“子模型”自动更新，越用越聪明。
+- **普适化微定制**: 一套核心框架，通过简单配置就能适应不同工业场景。
 
-## 🛠️ 物料清单
-
-| 名称 | 型号 | 参考价格 | 备注 |
-|:---|:---|:---|:---|
-| 主控 | ESP32-S3 N8R8 | ¥20 | 必须带 PSRAM |
-| 传感器 | MPU6050 | ¥10 | 六轴加速度计 |
-| 连接线 | 母对母杜邦线 ×4 | ¥2 | |
-| USB线 | Micro USB 数据线 | ¥5 | 必须能传数据 |
-| 被测设备 | USB小风扇 | ¥10 | 或任何旋转设备 |
-| **总成本** | | **≈ ¥47** | |
-
-## 📁 项目结构
-```
-VibeSense/
-├── README.md              # 本文件
-├── hardware/              # 硬件设计
-│   └── wiring.jpg         # 接线图
-├── firmware/              # ESP32 固件
-│   ├── vibesense_basic/   # 基础数据采集+FFT
-│   └── vibesense_ai/      # 集成AI模型的完整版
-├── model/                 # AI 模型
-│   ├── train_model.py     # 训练脚本
-│   ├── exported_c_model.h # 导出的C代码
-│   └── vibration_model.pkl
-├── docs/                  # 文档
-│   └── user_manual.md
-└── LICENSE
-```
 ## 🚀 快速开始
 
-### 1. 硬件接线
-将 MPU6050 与 ESP32-S3 连接：
-- VCC → 3.3V
-- GND → GND
-- SCL → GPIO 22
-- SDA → GPIO 21
+- **硬件**: ESP32-S3, MPU6050 (振动), MLX90614 (温度), SCT-013 (电流)
+- **固件**: 参考 `firmware/` 目录下的代码
+- **平台**: 参考 `platform/` 目录下的云端代码
+- **详细文档**: 请访问我们的 [Wiki]
 
-将传感器固定在风扇外壳上。
+## 📚 核心文档
 
-### 2. 软件环境
-- Arduino IDE 2.x
-- ESP32 开发板包（by Espressif）
-- 库：`MPU6050`、`arduinoFFT`
+- **[行业洞察: 工业设备社交网络](./docs/vision.md)** - **强烈推荐阅读**，了解我们项目的核心理念和未来愿景。
 
-### 3. 烧录固件
-1. 打开 `firmware/vibesense_ai/vibesense_ai.ino`
-2. 选择开发板 `ESP32S3 Dev Module`，PSRAM 设为 `OPI PSRAM`
-3. 上传代码
+## 🤝 贡献与许可
 
-### 4. 观察结果
-打开串口监视器（115200 波特率），正常状态输出 `✅ 正常`，当在扇叶上贴胶带制造不平衡故障时，输出 `⚠️ 报警`。
+本项目代码采用 [Apache 2.0](LICENSE) 协议开源。我们欢迎任何形式的社区贡献！但请注意：
+- **核心模型参数**和**联邦学习算法**属于商业机密，**不会开源**。
+- 欢迎通过 Issue 和 PR 参与通用框架、文档、示例的共建。
+- 商业合作或定制化需求，请联系: 1662284539@qq.com
 
-## 📊 效果演示
-[待插入视频链接]
+## 📄 学术成果
 
-## 🤝 贡献指南
-欢迎提 Issue 和 PR！如果你想：
-- 增加新的故障类型检测（如轴承磨损、不对中）
-- 适配其他传感器（如 ADXL345、IEPE）
-- 优化模型精度
+本项目核心技术已发表为EI会议论文:
+- **Y S Deng**, "Low-Cost Edge AI Fault Diagnosis System for Rotating Machinery Based on ESP32-S3," *2026 International Conference on Machine Learning and Embedded Systems (MLES 2026)*, SPIE, 2026. (EI Compendex, Scopus收录)
 
-请先阅读 `docs/` 下的开发文档。
+## 📧 联系方式
 
-## 📝 开源协议
-MIT License - 详见 [LICENSE](LICENSE) 文件。
+- **作者**: Y S Deng (邓一淞)
+- **学校**: Sichuan Technology and Business University
+- **邮箱**: 1662284539@qq.com
+- **GitHub**: [vibe-zhang](https://github.com/vibe-zhang)
