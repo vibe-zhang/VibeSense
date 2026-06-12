@@ -37,7 +37,6 @@ VibeSense 是一个**边缘AI多模态工业设备健康监测平台**。我们�
 
 ## 📧 联系方式
 
-- **作者**: Y S Deng (邓一淞)
-- **学校**: Sichuan Technology and Business University
+- **作者**: Y S Deng 
 - **邮箱**: 1662284539@qq.com
 - **GitHub**: [vibe-zhang](https://github.com/vibe-zhang)
